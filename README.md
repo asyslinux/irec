@@ -15,7 +15,7 @@ Scan all chunks:
 find /mnt/hdd-1/mfschunks -type f | xargs -I {} python3 irec.py {} /home/recovery/
 ```
 
-Scan chunks with size grater than 128KB:
+Scan chunks with size greater than 128KB:
 ```
 find /mnt/hdd-1/mfschunks -type f -size +131072c | xargs -I {} python3 irec.py {} /home/recovery/
 ```
