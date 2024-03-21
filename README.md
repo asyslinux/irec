@@ -19,13 +19,13 @@ recoverjpeg /path/to/imgfile -o /path/to/recovery
 
 ```
 git clone https://github.com/asyslinux/irec && cd irec && chmod a+x restore.sh
+mkdir -p /path/to/prepare && mkdir -p /path/to/recovery
 ```
 
 2. Restore JPG Images from MooseFS chunk files
 
 Scan all chunks:
 ```
-mkdir -p /path/to/prepare && mkdir -p /path/to/recovery
 find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -o /path/to/prepare/ && ./restore.sh /path/to/prepare/ /path/to/recovery'
 ```
 
