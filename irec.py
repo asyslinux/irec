@@ -69,15 +69,17 @@ def recoverFile(args, fileName, startingOffsetBytes, fileSize):
 
         os.system(recoveryOperation)
 
-        generateFileHash = f'sha256sum -z {tmpFileRecoveryPath} | cut -d " " -f1 | head -c -1'
+        if os.path.isfile(tmpFileRecoveryPath):
 
-        recoveryEndPath = hash2path(os.popen(generateFileHash).read())
-        recoveryEndDir = os.path.dirname(os.path.normpath(sys.argv[2] + '/' + recoveryEndPath))
+            generateFileHash = f'sha256sum -z {tmpFileRecoveryPath} | cut -d " " -f1 | head -c -1'
 
-        sys.stdout.flush()
+            recoveryEndPath = hash2path(os.popen(generateFileHash).read())
+            recoveryEndDir = os.path.dirname(os.path.normpath(sys.argv[2] + '/' + recoveryEndPath))
 
-        os.system(f'mkdir -p {recoveryEndDir}')
-        hashFileName = os.path.normpath(sys.argv[2] + '/' + recoveryEndPath + extensionFile)
+            sys.stdout.flush()
+
+            os.system(f'mkdir -p {recoveryEndDir}')
+            hashFileName = os.path.normpath(sys.argv[2] + '/' + recoveryEndPath + extensionFile)
     else:
         print('' )
         print('Error: no given raw file or disk image or/and recovery folder path' )
@@ -113,9 +115,6 @@ def recoverJPGFiles(diskContents, hexIdentifier):
         startingOffsetBytes = int(hexIdentifier / 2)
         endingOffsetBytes = int(math.ceil(fileEndBytes / 2))
         fileSize = endingOffsetBytes - startingOffsetBytes
-
-        # Print file information: file name, start offset, and end offset
-        #printFileInfo(fileName, startingOffsetBytes, endingOffsetBytes)
 
         # Recover file using the file info we calculated and get SHA-256 hash
         recoverFile(sys.argv[1], fileName, startingOffsetBytes, fileSize)
