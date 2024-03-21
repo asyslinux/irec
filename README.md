@@ -1,4 +1,5 @@
 # JPG Recovery Tool
+
 - Install
 ```
 apt -y install recoverjpeg
@@ -14,6 +15,8 @@ recoverjpeg /path/to/imgfile -o /path/to/recovery
 ```
 
 - Example usage with MooseFS chunk files
+
+Via this tool from MooseFS chunk files can be restored jpg files only with size <64MB
 
 1. Download `restore.sh` script from this repo 
 
