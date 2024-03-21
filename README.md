@@ -26,7 +26,7 @@ mkdir -p /path/to/prepare && mkdir -p /path/to/recovery
 
 Scan all chunks:
 ```
-find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -o /path/to/prepare/ && ./restore.sh /path/to/prepare/ /path/to/recovery'
+find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -o /path/to/prepare/ && ./restore.sh /path/to/prepare /path/to/recovery'
 ```
 
 Scan chunks with size greater than 128KB:
