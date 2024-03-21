@@ -80,6 +80,8 @@ def recoverFile(args, fileName, startingOffsetBytes, fileSize):
 
             os.system(f'mkdir -p {recoveryEndDir}')
             hashFileName = os.path.normpath(sys.argv[2] + '/' + recoveryEndPath + extensionFile)
+            shutil.move(tmpFileRecoveryPath, hashFileName)
+            print('Recovered file: ' + hashFileName)
     else:
         print('' )
         print('Error: no given raw file or disk image or/and recovery folder path' )
@@ -89,9 +91,6 @@ def recoverFile(args, fileName, startingOffsetBytes, fileSize):
         print('Usage: python3 irec.py /path/to/device /path/to/recovery/folder' )
         print('' )
         exit(1)
-
-    shutil.move(tmpFileRecoveryPath, hashFileName)
-    print('Recovered file: ' + hashFileName)
 
 # Recover JPG files
 def recoverJPGFiles(diskContents, hexIdentifier):
