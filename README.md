@@ -29,7 +29,7 @@ Scan all chunks:
 find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -o /path/to/prepare/ && ./restore.sh /path/to/prepare /path/to/recovery'
 ```
 
-Scan chunks with size greater than 128KB:
+Scan chunks with size greater than 256KB:
 ```
-find /mnt/hdd-1/mfschunks -type f -size +131072c | xargs -i bash -c 'recoverjpeg {} -o /path/to/prepare/ && ./restore.sh /path/to/prepare/ /path/to/recovery'
+find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -s 262144 -o /path/to/prepare/ && ./restore.sh /path/to/prepare/ /path/to/recovery'
 ```
