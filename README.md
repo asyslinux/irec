@@ -14,7 +14,7 @@ recoverjpeg /path/to/rawfile -m 256m -o /path/to/recovery
 recoverjpeg /path/to/imgfile -m 256m -o /path/to/recovery
 ```
 
-Notice: recoverjpeg utility by default has max size 6MB (-m option), if not set more, then recoverjpeg would recovery only <6MB size of jpg file images
+Notice: recoverjpeg utility by default has max size 6MB (-m option), if not set more, then `recoverjpeg` would recovery only <6MB size of jpg file images
 
 - Example usage with MooseFS chunk files
 
