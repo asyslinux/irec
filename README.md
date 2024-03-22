@@ -29,12 +29,12 @@ mkdir -p /path/to/prepare && mkdir -p /path/to/recovery
 
 2. Restore jpg images from MooseFS chunk files
 
-Restore all jpg images:
+Restore all jpg images with size smaller than 64MB:
 ```
 find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -m 64m -o /path/to/prepare/ && ./restore.sh /path/to/prepare /path/to/recovery'
 ```
 
-Restore jpg images with size greater than 256KB:
+Restore all jpg images with size greater than 256KB and smaller than 64MB:
 ```
 find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -s 256k -m 64m -o /path/to/prepare/ && ./restore.sh /path/to/prepare/ /path/to/recovery'
 ```
