@@ -9,10 +9,12 @@ apt -y install recoverjpeg
 ```
 recoverjpeg --help
 
-recoverjpeg /path/to/device -o /path/to/recovery
-recoverjpeg /path/to/rawfile -o /path/to/recovery
-recoverjpeg /path/to/imgfile -o /path/to/recovery
+recoverjpeg /path/to/device -m 256m -o /path/to/recovery
+recoverjpeg /path/to/rawfile -m 256m -o /path/to/recovery
+recoverjpeg /path/to/imgfile -m 256m -o /path/to/recovery
 ```
+
+Notice: recoverjpeg utility by default has max size = 6MB, if not set more, then recoverjpeg would recovery only <6MB size of jpg file images
 
 - Example usage with MooseFS chunk files
 
@@ -29,10 +31,10 @@ mkdir -p /path/to/prepare && mkdir -p /path/to/recovery
 
 Restore all jpg images:
 ```
-find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -o /path/to/prepare/ && ./restore.sh /path/to/prepare /path/to/recovery'
+find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -m 64m -o /path/to/prepare/ && ./restore.sh /path/to/prepare /path/to/recovery'
 ```
 
 Restore jpg images with size greater than 256KB:
 ```
-find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -s 262144 -o /path/to/prepare/ && ./restore.sh /path/to/prepare/ /path/to/recovery'
+find /mnt/hdd-1/mfschunks -type f | xargs -i bash -c 'recoverjpeg {} -s 262144 -m 64m -o /path/to/prepare/ && ./restore.sh /path/to/prepare/ /path/to/recovery'
 ```
