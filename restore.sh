@@ -10,7 +10,7 @@ FBS="$DNM/$EXT"
 SUM=`md5sum -z "$FPN" | cut -d " " -f1 | head -c -1`
 
 if [ "$FPN" = "$FBS" ]; then
-FNM=`echo -n "$FPN" | rev | cut -d '/' -f1 | rev`
+FNM="$EXT"
 else
 FNM=`echo -n "$SUM.$EXT"`
 fi
