@@ -1,5 +1,6 @@
 # Multi Purpose Recovery Tool
 
+- Install
 ```
 apt -y install testdisk
 ```
