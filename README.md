@@ -1,3 +1,50 @@
+# Multi Purpose Recovery Tool
+
+```
+apt -y install testdisk
+```
+
+- Usage
+
+https://www.cgsecurity.org/testdisk_doc/scripted_run.html#automating-recovery-using-photorec
+```
+photorec /d /path/to/recovery /path/to/device
+photorec /d /path/to/recovery /path/to/device
+photorec /d /path/to/recovery /path/to/device
+```
+
+- Example usage with MooseFS chunk files
+
+Via this tool, from MooseFS chunk files can be restored all files only with size <64MB
+
+1. Download `restore.sh` script from this repo 
+
+```
+git clone https://github.com/asyslinux/irec && cd irec && chmod a+x restore.sh
+mkdir -p /path/to/prepare && mkdir -p /path/to/recovery
+```
+
+2. Restore files from MooseFS chunk files
+
+Restore all files with size smaller than 64MB:
+
+```
+find /mnt/hdd-1/mfschunks/ -type f | xargs -i bash -c 'photorec /d /path/to/prepare/ /cmd {} partition_none,fileopt,everything,enable,search 1>/dev/null && ./restore.sh /path/to/prepare /path/to/recovery'
+find /mnt/hdd-1/mfschunks/ -type f -size +131072c | xargs -i bash -c 'photorec /d /path/to/prepare/ /cmd {} partition_none,fileopt,everything,enable,search 1>/dev/null && ./restore.sh /mnt/hdd-2/prepare /mnt/hdd-2/photorec'
+```
+
+Restore all jpg images with size smaller than 64MB:
+
+```
+find /mnt/hdd-1/mfschunks/ -type f | xargs -i bash -c 'photorec /d /path/to/prepare/ /cmd {} partition_none,fileopt,everything,disable,jpg,enable,search 1>/dev/null && ./restore.sh /path/to/prepare /path/to/recovery'
+```
+
+Restore all jpg images with size greater than 128KB and smaller than 64MB:
+
+```
+find /mnt/hdd-1/mfschunks/ -type f -size +131072c | xargs -i bash -c 'photorec /d /path/to/prepare/ /cmd {} partition_none,fileopt,everything,disable,jpg,enable,search 1>/dev/null && ./restore.sh /path/to/prepare /path/to/recovery'
+```
+-----------------------------------------------------------------------------------------------------------------------
 # JPG Recovery Tool
 
 - Install
@@ -27,7 +74,7 @@ git clone https://github.com/asyslinux/irec && cd irec && chmod a+x restore.sh
 mkdir -p /path/to/prepare && mkdir -p /path/to/recovery
 ```
 
-2. Restore jpg images from MooseFS chunk files
+2. Restore files from MooseFS chunk files
 
 Restore all jpg images with size smaller than 64MB:
 ```
