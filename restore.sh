@@ -1,10 +1,9 @@
 #!/bin/bash
 
-for FPN in `find $1/ -type f -not -wholename $1/recup_dir.*/report.xml`
+for FPN in `find $1/ -type f -not -wholename "$1/recup_dir.*/report.xml"`
 do
 
 EXT=`echo -n "$FPN" | awk -F'[.]' '{print $NF}'`
-
 SUM=`md5sum -z "$FPN" | cut -d " " -f1 | head -c -1`
 
 if [ "$FPN" = "$EXT" ]; then
