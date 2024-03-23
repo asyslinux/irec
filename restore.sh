@@ -5,10 +5,11 @@ do
 
 EXT=`echo -n "$FPN" | awk -F'[.]' '{print $NF}'`
 
+SUM=`md5sum -z "$FPN" | cut -d " " -f1 | head -c -1`
+
 if [ "$FPN" = "$EXT" ]; then
 FNM=`echo -n "$FPN" | rev | cut -d '/' -f1 | rev`
 else
-SUM=`md5sum -z "$FPN" | cut -d " " -f1 | head -c -1`
 FNM=`echo -n "$SUM.$EXT"`
 fi
 
