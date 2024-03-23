@@ -39,10 +39,10 @@ Restore all jpg images with size smaller than 64MB:
 find /mnt/hdd-1/mfschunks/ -type f | xargs -i bash -c 'photorec /d /path/to/prepare/ /cmd {} partition_none,fileopt,everything,disable,jpg,enable,search 1>/dev/null && ./restore.sh /path/to/prepare /path/to/recovery'
 ```
 
-Restore all jpg images with size greater than 128KB and smaller than 64MB:
+Restore all jpg images with size greater than 256KB and smaller than 64MB:
 
 ```
-find /mnt/hdd-1/mfschunks/ -type f -size +131072c | xargs -i bash -c 'photorec /d /path/to/prepare/ /cmd {} partition_none,fileopt,everything,disable,jpg,enable,search 1>/dev/null && ./restore.sh /path/to/prepare /path/to/recovery'
+find /mnt/hdd-1/mfschunks/ -type f -size +262144c | xargs -i bash -c 'photorec /d /path/to/prepare/ /cmd {} partition_none,fileopt,everything,disable,jpg,enable,search 1>/dev/null && ./restore.sh /path/to/prepare /path/to/recovery'
 ```
 
 -----------------------------------------------------------------------------------------------------------------------
