@@ -43,8 +43,10 @@ Restore all jpg images with size greater than 128KB and smaller than 64MB:
 ```
 find /mnt/hdd-1/mfschunks/ -type f -size +131072c | xargs -i bash -c 'photorec /d /path/to/prepare/ /cmd {} partition_none,fileopt,everything,disable,jpg,enable,search 1>/dev/null && ./restore.sh /path/to/prepare /path/to/recovery'
 ```
+
 -----------------------------------------------------------------------------------------------------------------------
-# JPG Recovery Tool
+
+# Additional Simple JPG Recovery Tool
 
 - Install
 ```
