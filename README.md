@@ -8,6 +8,8 @@ apt -y install testdisk
 - Usage
 
 https://www.cgsecurity.org/testdisk_doc/scripted_run.html#automating-recovery-using-photorec
+https://www.cgsecurity.org/wiki/File_Formats_Recovered_By_PhotoRec
+
 ```
 photorec /d /path/to/recovery /path/to/device
 photorec /d /path/to/recovery /path/to/device
