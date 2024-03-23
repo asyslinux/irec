@@ -3,10 +3,13 @@
 for FPN in `find $1/ -type f -not -wholename "$1/recup_dir.*/report.xml"`
 do
 
-EXT=`echo -n "$FPN" | awk '{gsub(/.*[/]|[.].*/, "", $0)} 1'`
+DNM=`dirname "$FPN"`
+EXT=`echo -n "$FPN" | awk '{gsub(/.*[/]|[.]{1}[^.]+$/, "", $0)} 1' | awk -F'[.]' '{print $NF}'`
+FBS="$DNM/$EXT"
+
 SUM=`md5sum -z "$FPN" | cut -d " " -f1 | head -c -1`
 
-if [ "$FPN" = "$EXT" ]; then
+if [ "$FPN" = "$FBS" ]; then
 FNM=`echo -n "$FPN" | rev | cut -d '/' -f1 | rev`
 else
 FNM=`echo -n "$SUM.$EXT"`
