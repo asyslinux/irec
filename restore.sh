@@ -3,7 +3,7 @@
 for FPN in `find $1/ -type f -not -wholename "$1/recup_dir.*/report.xml"`
 do
 
-EXT=`echo -n "$FPN" | awk -F'[.]' '{print $NF}'`
+EXT=`echo -n "$FPN" | awk '{gsub(/.*[/]|[.].*/, "", $0)} 1'`
 SUM=`md5sum -z "$FPN" | cut -d " " -f1 | head -c -1`
 
 if [ "$FPN" = "$EXT" ]; then
